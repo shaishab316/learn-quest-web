@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
 interface PotionProgressBarProps {
   current: number;
   max: number;
@@ -9,13 +9,13 @@ interface PotionProgressBarProps {
 export function PotionProgressBar({
   current,
   max,
-  label
+  label,
 }: PotionProgressBarProps) {
-  const percentage = Math.min(100, Math.max(0, current / max * 100));
+  const percentage = Math.min(100, Math.max(0, (current / max) * 100));
   return (
     <div className="w-full max-w-md mx-auto group">
-      {label &&
-      <div className="flex justify-between items-center mb-2 px-2">
+      {label && (
+        <div className="flex justify-between items-center mb-2 px-2">
           <span className="text-white font-bold text-sm tracking-wide flex items-center gap-2">
             <Sparkles size={14} className="text-kingdom-blue" />
             {label}
@@ -24,7 +24,7 @@ export function PotionProgressBar({
             {current}/{max}
           </span>
         </div>
-      }
+      )}
 
       {/* Potion Bottle Container */}
       <div className="relative h-14 bg-kingdom-dark/60 rounded-full border-[3px] border-white/20 overflow-hidden backdrop-blur-md shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]">
@@ -32,35 +32,35 @@ export function PotionProgressBar({
         <motion.div
           className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-600 via-kingdom-blue to-cyan-300"
           initial={{
-            width: '0%'
+            width: "0%",
           }}
           animate={{
-            width: `${percentage}%`
+            width: `${percentage}%`,
           }}
           transition={{
-            type: 'spring',
+            type: "spring",
             stiffness: 40,
-            damping: 15
-          }}>
-
+            damping: 15,
+          }}
+        >
           {/* Wave effect on top of liquid */}
           <div className="absolute top-0 right-0 w-4 h-full bg-white/30 skew-x-12 blur-sm" />
 
           {/* Bubbles inside liquid */}
           <div className="absolute inset-0 overflow-hidden">
-            {[...Array(8)].map((_, i) =>
-            <div
-              key={i}
-              className="absolute bg-white/40 rounded-full"
-              style={{
-                width: Math.random() * 6 + 2 + 'px',
-                height: Math.random() * 6 + 2 + 'px',
-                left: `${Math.random() * 100}%`,
-                bottom: '-10px',
-                animation: `bubble-rise ${1 + Math.random() * 2}s infinite ${Math.random() * 2}s linear`
-              }} />
-
-            )}
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute bg-white/40 rounded-full"
+                style={{
+                  width: 0.8 * 6 + 2 + "px",
+                  height: 0.8 * 6 + 2 + "px",
+                  left: `${0.8 * 100}%`,
+                  bottom: "-10px",
+                  animation: `bubble-rise ${1 + 0.8 * 2}s infinite ${0.8 * 2}s linear`,
+                }}
+              />
+            ))}
           </div>
 
           {/* Glow */}
@@ -86,16 +86,16 @@ export function PotionProgressBar({
           className="absolute left-[50%] bottom-0"
           animate={{
             y: [-5, -15],
-            opacity: [1, 0]
+            opacity: [1, 0],
           }}
           transition={{
             duration: 1.5,
-            repeat: Infinity
-          }}>
-
+            repeat: Infinity,
+          }}
+        >
           <Sparkles size={12} className="text-kingdom-blue" />
         </motion.div>
       </div>
-    </div>);
-
+    </div>
+  );
 }

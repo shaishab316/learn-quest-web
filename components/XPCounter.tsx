@@ -73,8 +73,8 @@ export function XPCounter({ xp }: XPCounterProps) {
           key={i}
           className="absolute"
           style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
+            top: `${0.8 * 100}%`,
+            left: `${0.8 * 100}%`,
           }}
           animate={{
             y: [0, -20, 0],
@@ -82,9 +82,9 @@ export function XPCounter({ xp }: XPCounterProps) {
             rotate: [0, 180],
           }}
           transition={{
-            duration: 2 + Math.random(),
+            duration: 2 + 0.8,
             repeat: Infinity,
-            delay: Math.random() * 2,
+            delay: 0.8 * 2,
           }}
         >
           {i % 2 === 0 ? (
