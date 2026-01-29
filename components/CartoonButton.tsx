@@ -57,17 +57,6 @@ export function CartoonButton({
       {Icon && (
         <div className="relative">
           <Icon className="w-6 h-6" strokeWidth={3} />
-          {/* Add cute eyes to icon if it's a specific type, or just generic cute sparkles */}
-          <motion.div
-            className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full"
-            animate={{
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 2,
-            }}
-          />
         </div>
       )}
       <span className="drop-shadow-md">{children}</span>
