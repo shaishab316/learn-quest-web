@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+/* eslint-disable @next/next/no-img-element */
 import { motion } from "framer-motion";
 import {
   Rocket,
@@ -12,7 +12,6 @@ import {
   Flame,
   Gift,
   Trophy,
-  Calendar,
   Gamepad2,
 } from "lucide-react";
 import { FloatingParticles } from "./FloatingParticles";
@@ -43,7 +42,7 @@ export function StudentDashboard() {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 12,
       },
@@ -67,8 +66,8 @@ export function StudentDashboard() {
             }}
             className="flex items-center gap-3"
           >
-            <div className="w-16 h-16 bg-gradient-to-br from-kingdom-blue to-blue-600 rounded-2xl flex items-center justify-center transform -rotate-6 border-2 border-white shadow-[0_0_15px_rgba(0,212,255,0.5)] group cursor-pointer hover:rotate-0 transition-transform">
-              <img src="/logo.png" />
+            <div className="w-16 h-16 bg-linear-to-br from-kingdom-blue to-blue-600 rounded-2xl flex items-center justify-center transform -rotate-6 border-2 border-white shadow-[0_0_15px_rgba(0,212,255,0.5)] group cursor-pointer hover:rotate-0 transition-transform">
+              <img src="/logo.png" alt="logo" />
             </div>
             <div>
               <h1 className="text-2xl font-black tracking-tight leading-none">
@@ -148,7 +147,7 @@ export function StudentDashboard() {
           >
             {/* Profile Card */}
             <div className="bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-8 border border-white/10 text-center relative overflow-hidden shadow-2xl group">
-              <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-kingdom-blue/20 to-transparent opacity-50" />
+              <div className="absolute top-0 left-0 w-full h-40 bg-linear-to-b from-kingdom-blue/20 to-transparent opacity-50" />
 
               {/* Animated background circles */}
               <div className="absolute top-10 right-10 w-20 h-20 bg-kingdom-purple/20 rounded-full blur-xl animate-pulse-slow" />
@@ -209,7 +208,7 @@ export function StudentDashboard() {
               whileHover={{
                 scale: 1.02,
               }}
-              className="bg-gradient-to-br from-kingdom-pink/20 to-purple-500/20 border border-kingdom-pink/30 rounded-3xl p-4 flex items-center gap-4 cursor-pointer relative overflow-hidden"
+              className="bg-linear-to-br from-kingdom-pink/20 to-purple-500/20 border border-kingdom-pink/30 rounded-3xl p-4 flex items-center gap-4 cursor-pointer relative overflow-hidden"
             >
               <div className="w-12 h-12 bg-kingdom-pink rounded-xl flex items-center justify-center text-white shadow-lg transform -rotate-6">
                 <Gift size={24} className="animate-bounce" />
@@ -227,7 +226,7 @@ export function StudentDashboard() {
             {/* Welcome Banner */}
             <motion.div
               variants={itemVariants}
-              className="bg-gradient-to-r from-kingdom-purple via-indigo-600 to-blue-600 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-2xl border-2 border-white/10"
+              className="bg-linear-to-r from-kingdom-purple via-indigo-600 to-blue-600 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-2xl border-2 border-white/10"
             >
               <div className="relative z-10 max-w-xl">
                 <div className="inline-block bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white mb-4 border border-white/20">
@@ -281,7 +280,7 @@ export function StudentDashboard() {
                     }}
                     className="absolute -top-4 -left-10 bg-white text-kingdom-dark px-4 py-2 rounded-xl rounded-br-none font-bold text-sm shadow-lg transform -rotate-6"
                   >
-                    Let's go! 🚀
+                    Let&apos;s go! 🚀
                   </motion.div>
                 </div>
               </div>
@@ -372,7 +371,7 @@ export function StudentDashboard() {
             {/* Recent Achievements */}
             <motion.div
               variants={itemVariants}
-              className="bg-white/5 border border-white/10 rounded-[2rem] p-8 relative overflow-hidden"
+              className="bg-white/5 border border-white/10 rounded-4xl p-8 relative overflow-hidden"
             >
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-black flex items-center gap-2">
@@ -392,14 +391,14 @@ export function StudentDashboard() {
                       y: -5,
                       scale: 1.05,
                     }}
-                    className="flex-shrink-0 flex flex-col items-center gap-3 group cursor-pointer"
+                    className="shrink-0 flex flex-col items-center gap-3 group cursor-pointer"
                   >
                     <div
                       className={`w-20 h-20 rounded-2xl flex items-center justify-center border-2 transition-all shadow-lg relative overflow-hidden
-                      ${i < 4 ? "bg-gradient-to-br from-white/10 to-white/5 border-kingdom-yellow/50 group-hover:border-kingdom-yellow" : "bg-black/20 border-white/5 grayscale opacity-50"}
+                      ${i < 4 ? "bg-linear-to-br from-white/10 to-white/5 border-kingdom-yellow/50 group-hover:border-kingdom-yellow" : "bg-black/20 border-white/5 grayscale opacity-50"}
                     `}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-linear-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       <Star
                         size={32}
                         className={

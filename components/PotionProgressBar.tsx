@@ -1,100 +1,162 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+
 interface PotionProgressBarProps {
   current: number;
   max: number;
   label?: string;
 }
+
 export function PotionProgressBar({
   current,
   max,
   label,
 }: PotionProgressBarProps) {
   const percentage = Math.min(100, Math.max(0, (current / max) * 100));
+
   return (
-    <div className="w-full max-w-md mx-auto group">
+    <div className="w-full max-w-md mx-auto">
       {label && (
         <div className="flex justify-between items-center mb-2 px-2">
-          <span className="text-white font-bold text-sm tracking-wide flex items-center gap-2">
-            <Sparkles size={14} className="text-kingdom-blue" />
+          <span className="text-white font-bold text-sm tracking-wide">
             {label}
           </span>
-          <span className="text-kingdom-blue font-black text-sm bg-white/10 px-2 py-0.5 rounded-lg">
+          <span className="text-cyan-400 font-bold text-sm">
             {current}/{max}
           </span>
         </div>
       )}
 
       {/* Potion Bottle Container */}
-      <div className="relative h-14 bg-kingdom-dark/60 rounded-full border-[3px] border-white/20 overflow-hidden backdrop-blur-md shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]">
-        {/* Liquid */}
+      <div className="relative h-12 bg-slate-900/60 rounded-full border-4 border-white/20 overflow-hidden backdrop-blur-sm shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
+        {/* Liquid Container */}
         <motion.div
-          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-600 via-kingdom-blue to-cyan-300"
-          initial={{
-            width: "0%",
-          }}
-          animate={{
-            width: `${percentage}%`,
-          }}
+          className="absolute bottom-0 left-0 right-0 overflow-hidden"
+          initial={{ height: "0%" }}
+          animate={{ height: `${percentage}%` }}
           transition={{
             type: "spring",
-            stiffness: 40,
-            damping: 15,
+            stiffness: 60,
+            damping: 20,
           }}
         >
-          {/* Wave effect on top of liquid */}
-          <div className="absolute top-0 right-0 w-4 h-full bg-white/30 skew-x-12 blur-sm" />
+          {/* Base Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-t from-blue-600 via-blue-500 to-cyan-400" />
 
-          {/* Bubbles inside liquid */}
-          <div className="absolute inset-0 overflow-hidden">
+          {/* Primary Wave */}
+          <div className="absolute top-0 left-0 w-full h-full">
+            <motion.div
+              className="absolute top-0 left-0 w-[200%] h-8"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, rgba(103, 232, 249, 0.8) 0%, rgba(59, 130, 246, 0.6) 50%, transparent 70%)",
+                filter: "blur(1px)",
+              }}
+              animate={{
+                x: ["-50%", "0%"],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 3,
+                ease: "linear",
+              }}
+            >
+              <svg
+                className="w-full h-full"
+                viewBox="0 0 1200 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,50 Q150,20 300,50 T600,50 T900,50 T1200,50 L1200,100 L0,100 Z"
+                  fill="rgba(103, 232, 249, 0.4)"
+                />
+              </svg>
+            </motion.div>
+          </div>
+
+          {/* Secondary Wave (offset) */}
+          <div className="absolute top-0 left-0 w-full h-full">
+            <motion.div
+              className="absolute top-0 left-0 w-[200%] h-8"
+              style={{
+                filter: "blur(2px)",
+              }}
+              animate={{
+                x: ["0%", "-50%"],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 4,
+                ease: "linear",
+              }}
+            >
+              <svg
+                className="w-full h-full"
+                viewBox="0 0 1200 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,60 Q200,30 400,60 T800,60 T1200,60 L1200,100 L0,100 Z"
+                  fill="rgba(59, 130, 246, 0.3)"
+                />
+              </svg>
+            </motion.div>
+          </div>
+
+          {/* Bubbles */}
+          <div className="absolute inset-0">
             {[...Array(8)].map((_, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="absolute bg-white/40 rounded-full"
+                className="absolute rounded-full bg-white/30"
                 style={{
-                  width: 0.8 * 6 + 2 + "px",
-                  height: 0.8 * 6 + 2 + "px",
-                  left: `${0.8 * 100}%`,
-                  bottom: "-10px",
-                  animation: `bubble-rise ${1 + 0.8 * 2}s infinite ${0.8 * 2}s linear`,
+                  width: `${4 + (i % 3) * 2}px`,
+                  height: `${4 + (i % 3) * 2}px`,
+                  left: `${10 + i * 12}%`,
+                  bottom: "0%",
+                }}
+                animate={{
+                  y: [0, -60, -80],
+                  opacity: [0, 0.6, 0],
+                  scale: [0.5, 1, 0.8],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 2.5 + i * 0.3,
+                  delay: i * 0.3,
+                  ease: "easeOut",
                 }}
               />
             ))}
           </div>
 
-          {/* Glow */}
-          <div className="absolute inset-0 bg-kingdom-blue/20 blur-sm" />
+          {/* Shimmer Effect */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+            style={{
+              width: "30%",
+            }}
+            animate={{
+              x: ["-30%", "130%"],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 3,
+              ease: "easeInOut",
+              repeatDelay: 1,
+            }}
+          />
+
+          {/* Inner Glow */}
+          <div className="absolute inset-0 bg-cyan-400/20 blur-xl" />
         </motion.div>
 
-        {/* Glass Reflection/Shine */}
-        <div className="absolute top-1 left-2 right-2 h-1/2 bg-gradient-to-b from-white/20 to-transparent rounded-full pointer-events-none" />
+        {/* Glass Shine Effects */}
+        <div className="absolute top-2 left-3 right-1/3 h-4 bg-gradient-to-r from-white/30 via-white/10 to-transparent rounded-full blur-sm pointer-events-none" />
+        <div className="absolute bottom-2 right-3 w-3 h-3 bg-white/20 rounded-full blur-[2px] pointer-events-none" />
 
-        {/* Measurement marks */}
-        <div className="absolute inset-0 flex justify-evenly items-end pb-1 pointer-events-none opacity-30">
-          <div className="w-0.5 h-2 bg-white" />
-          <div className="w-0.5 h-3 bg-white" />
-          <div className="w-0.5 h-2 bg-white" />
-          <div className="w-0.5 h-3 bg-white" />
-          <div className="w-0.5 h-2 bg-white" />
-        </div>
-      </div>
-
-      {/* Floating magic particles above */}
-      <div className="relative h-4 w-full overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute left-[50%] bottom-0"
-          animate={{
-            y: [-5, -15],
-            opacity: [1, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-          }}
-        >
-          <Sparkles size={12} className="text-kingdom-blue" />
-        </motion.div>
+        {/* Top Highlight */}
+        <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
       </div>
     </div>
   );

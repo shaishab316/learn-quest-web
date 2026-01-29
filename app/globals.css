@@ -1,103 +1,113 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --color-kingdom-dark: #0f0f1a;
-    --color-kingdom-blue: #00d4ff;
-    --color-kingdom-purple: #bb86fc;
-    --color-kingdom-yellow: #ffca28;
-    --color-kingdom-pink: #ff6b6b;
-    --color-kingdom-green: #4ade80;
+@theme {
+  --color-kingdom-dark: #0f0f1a;
+  --color-kingdom-blue: #00d4ff;
+  --color-kingdom-purple: #bb86fc;
+  --color-kingdom-yellow: #ffca28;
+  --color-kingdom-pink: #ff6b6b;
+  --color-kingdom-green: #4ade80;
+}
+
+/* Keyframes */
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-@layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
   }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  50% {
+    opacity: 0.6;
   }
-}
-
-@layer keyframes {
-  @keyframes wave {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-25%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  @keyframes bubble-rise {
-    0% {
-      bottom: -10px;
-      opacity: 0;
-      transform: scale(0.5);
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      bottom: 100%;
-      opacity: 0;
-      transform: scale(1.2);
-    }
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  @keyframes wiggle {
-    0%,
-    100% {
-      transform: rotate(-3deg);
-    }
-    50% {
-      transform: rotate(3deg);
-    }
+  100% {
+    transform: translateY(-80px) scale(0.8);
+    opacity: 0;
   }
 }
 
-@layer utilities {
-  .animate-wave {
-    animation: wave 3s linear infinite;
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
   }
+  50% {
+    transform: translateY(-20px);
+  }
+}
 
-  .animate-bubble-rise {
-    animation: bubble-rise 2s ease-in infinite;
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
   }
+  50% {
+    transform: rotate(3deg);
+  }
+}
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+@keyframes wave-flow {
+  0% {
+    transform: translateX(-50%) translateY(0);
   }
+  100% {
+    transform: translateX(0%) translateY(0);
+  }
+}
 
-  .animate-float-delayed {
-    animation: float 6s ease-in-out 3s infinite;
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
   }
+  100% {
+    transform: translateX(200%);
+  }
+}
 
-  .animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
+/* Utility Classes */
+@utility animate-wave {
+  animation: wave 3s linear infinite;
+}
 
-  .animate-wiggle {
-    animation: wiggle 1s ease-in-out infinite;
-  }
+@utility animate-bubble-rise {
+  animation: bubble-rise 3s ease-out infinite;
+}
 
-  .animate-spin-slow {
-    animation: spin 12s linear infinite;
-  }
+@utility animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@utility animate-float-delayed {
+  animation: float 6s ease-in-out 3s infinite;
+}
+
+@utility animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@utility animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+@utility animate-spin-slow {
+  animation: spin 12s linear infinite;
+}
+
+@utility wave-flow {
+  animation: wave-flow 3s linear infinite;
+}
+
+@utility shimmer {
+  animation: shimmer 4s ease-in-out infinite;
 }
