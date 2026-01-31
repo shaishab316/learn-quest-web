@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, ArrowLeft, Send, CheckCircle2 } from "lucide-react";
 import { CartoonButton } from "@/components/CartoonButton";
-import { AuthLayout } from "@/components/AuthLayout";
 import { useRouter } from "next/navigation";
 
 export default function ForgotPasswordPage() {
@@ -19,7 +18,12 @@ export default function ForgotPasswordPage() {
 
   if (isSubmitted) {
     return (
-      <AuthLayout title="Spell Sent!" subtitle="Check your magic inbox">
+      <div>
+        <div className="text-center lg:text-left mb-8">
+          <h2 className="text-2xl font-black text-white mb-2">Spell Sent!</h2>
+          <p className="text-white/60 font-medium">Check your magic inbox</p>
+        </div>
+
         <div className="text-center space-y-6">
           <motion.div
             initial={{
@@ -54,11 +58,19 @@ export default function ForgotPasswordPage() {
             Try a different email
           </button>
         </div>
-      </AuthLayout>
+      </div>
     );
   }
+
   return (
-    <AuthLayout title="Lost Password?" subtitle="Don't worry, we can fix it!">
+    <div>
+      <div className="text-center lg:text-left mb-8">
+        <h2 className="text-2xl font-black text-white mb-2">Lost Password?</h2>
+        <p className="text-white/60 font-medium">
+          Don&apos;t worry, we can fix it!
+        </p>
+      </div>
+
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="bg-kingdom-blue/10 border border-kingdom-blue/20 rounded-2xl p-4 flex gap-3 items-start">
           <div className="text-2xl">🤔</div>
@@ -108,6 +120,6 @@ export default function ForgotPasswordPage() {
           Back to Login
         </button>
       </form>
-    </AuthLayout>
+    </div>
   );
 }

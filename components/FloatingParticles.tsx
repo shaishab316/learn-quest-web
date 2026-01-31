@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Heart, Star, Circle, Hexagon, Triangle } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 interface Particle {
   id: number;
   x: number;
@@ -39,6 +41,7 @@ export function FloatingParticles() {
         rotation: 0.8 * 360,
       });
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setParticles(newParticles);
   }, []);
   return (

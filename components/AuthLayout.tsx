@@ -18,8 +18,6 @@ import {
 
 interface AuthLayoutProps {
   children: React.ReactNode;
-  title: string;
-  subtitle?: string;
 }
 
 // Animated 3D-style Castle built with CSS
@@ -450,7 +448,7 @@ function KingdomShowcase() {
     </div>
   );
 }
-export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
+export function AuthLayout({ children }: AuthLayoutProps) {
   return (
     <div className="min-h-screen bg-kingdom-dark text-white font-sans overflow-hidden relative">
       <FloatingParticles />
@@ -510,18 +508,7 @@ export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
               {/* Decorative background glow */}
               <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-kingdom-blue/10 to-transparent pointer-events-none" />
 
-              <div className="relative z-10">
-                <div className="text-center lg:text-left mb-8">
-                  <h2 className="text-2xl font-black text-white mb-2">
-                    {title}
-                  </h2>
-                  {subtitle && (
-                    <p className="text-white/60 font-medium">{subtitle}</p>
-                  )}
-                </div>
-
-                {children}
-              </div>
+              <div className="relative z-10">{children}</div>
             </div>
           </motion.div>
 

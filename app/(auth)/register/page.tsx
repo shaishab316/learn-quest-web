@@ -11,7 +11,6 @@ import {
   Check,
   Sparkles,
 } from "lucide-react";
-import { AuthLayout } from "@/components/AuthLayout";
 import { CartoonButton } from "@/components/CartoonButton";
 import Link from "next/link";
 
@@ -40,7 +39,14 @@ export default function SignupPage() {
 
   const strength = getStrength(password);
   return (
-    <AuthLayout title="Join the Adventure!" subtitle="Create your hero profile">
+    <div>
+      <div className="text-center lg:text-left mb-8">
+        <h2 className="text-2xl font-black text-white mb-2">
+          Join the Adventure!
+        </h2>
+        <p className="text-white/60 font-medium">Create your hero profile</p>
+      </div>
+
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Role Selector */}
         <div className="grid grid-cols-2 gap-4 mb-6">
@@ -220,6 +226,6 @@ export default function SignupPage() {
           </p>
         </div>
       </form>
-    </AuthLayout>
+    </div>
   );
 }

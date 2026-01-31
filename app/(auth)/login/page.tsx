@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react";
-import { AuthLayout } from "@/components/AuthLayout";
 import { CartoonButton } from "@/components/CartoonButton";
 import Link from "next/link";
 
@@ -17,10 +16,16 @@ export default function LoginPage() {
   };
 
   return (
-    <AuthLayout
-      title="Welcome back, Hero!"
-      subtitle="Ready to continue your adventure?"
-    >
+    <div>
+      <div className="text-center lg:text-left mb-8">
+        <h2 className="text-2xl font-black text-white mb-2">
+          Welcome back, Hero!
+        </h2>
+        <p className="text-white/60 font-medium">
+          Ready to continue your adventure?
+        </p>
+      </div>
+
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Email Input */}
         <div className="space-y-2">
@@ -171,6 +176,6 @@ export default function LoginPage() {
           </p>
         </div>
       </form>
-    </AuthLayout>
+    </div>
   );
 }
