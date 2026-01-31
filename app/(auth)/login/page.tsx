@@ -162,13 +162,12 @@ export default function LoginPage() {
         <div className="text-center pt-2">
           <p className="text-white/60 font-medium">
             New adventurer?{" "}
-            <button
-              type="button"
-              // onClick={onSignupClick}
+            <Link
+              href="/register"
               className="text-kingdom-blue font-bold hover:text-kingdom-blue/80 hover:underline transition-all"
             >
               Create an account
-            </button>
+            </Link>
           </p>
         </div>
       </form>
