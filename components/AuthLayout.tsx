@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { motion } from "framer-motion";
 import { FloatingParticles } from "./FloatingParticles";
@@ -14,114 +15,33 @@ import {
   Gem,
   Flame,
 } from "lucide-react";
+
 interface AuthLayoutProps {
   children: React.ReactNode;
   title: string;
   subtitle?: string;
 }
+
 // Animated 3D-style Castle built with CSS
-function AnimatedCastle() {
+function AnimatedShowcase() {
+  <img src="/images/showcase1.png" alt="Showcase" />;
   return (
     <motion.div
-      className="relative"
       initial={{
-        scale: 0.8,
+        y: -20,
         opacity: 0,
       }}
       animate={{
-        scale: 1,
+        y: 0,
         opacity: 1,
       }}
       transition={{
         type: "spring",
         stiffness: 100,
-        delay: 0.3,
+        damping: 20,
       }}
     >
-      {/* Castle Base */}
-      <div className="relative">
-        {/* Main Tower */}
-        <div className="relative mx-auto w-32">
-          {/* Tower Roof */}
-          <div className="w-0 h-0 mx-auto border-l-40 border-r-40 border-b-50 border-l-transparent border-r-transparent border-b-kingdom-purple" />
-          {/* Flag */}
-          <motion.div
-            className="absolute -top-2 left-1/2 -translate-x-1/2"
-            animate={{
-              rotate: [-5, 5, -5],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-            }}
-          >
-            <div className="w-1 h-8 bg-white/80" />
-            <div className="absolute top-0 left-1 w-6 h-4 bg-kingdom-yellow rounded-r-sm" />
-          </motion.div>
-          {/* Tower Body */}
-          <div className="w-20 h-28 mx-auto bg-linear-to-b from-kingdom-purple to-purple-800 rounded-t-lg border-2 border-white/20">
-            {/* Window */}
-            <div className="w-8 h-10 mx-auto mt-4 bg-kingdom-blue/30 rounded-t-full border-2 border-white/30 relative overflow-hidden">
-              <motion.div
-                className="absolute inset-0 bg-kingdom-yellow/20"
-                animate={{
-                  opacity: [0.2, 0.6, 0.2],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                }}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Side Towers */}
-        <div className="absolute -left-8 top-12">
-          <div className="w-0 h-0 mx-auto border-l-24 border-r-24 border-b-30 border-l-transparent border-r-transparent border-b-kingdom-blue" />
-          <div className="w-12 h-20 bg-linear-to-b from-kingdom-blue to-blue-700 rounded-t-md border-2 border-white/20">
-            <div className="w-4 h-6 mx-auto mt-2 bg-kingdom-yellow/30 rounded-t-full border border-white/20" />
-          </div>
-        </div>
-
-        <div className="absolute -right-8 top-12">
-          <div className="w-0 h-0 mx-auto border-l-[24px] border-r-[24px] border-b-[30px] border-l-transparent border-r-transparent border-b-kingdom-pink" />
-          <div className="w-12 h-20 bg-linear-to-b from-kingdom-pink to-pink-700 rounded-t-md border-2 border-white/20">
-            <div className="w-4 h-6 mx-auto mt-2 bg-kingdom-yellow/30 rounded-t-full border border-white/20" />
-          </div>
-        </div>
-
-        {/* Castle Base/Wall */}
-        <div className="w-48 h-16 mx-auto bg-linear-to-b from-slate-600 to-slate-800 rounded-b-lg border-2 border-white/10 relative -mt-1">
-          {/* Gate */}
-          <div className="w-12 h-14 mx-auto bg-kingdom-dark rounded-t-full border-2 border-white/20 relative overflow-hidden">
-            <motion.div
-              className="absolute bottom-0 left-0 right-0 h-full bg-linear-to-t from-kingdom-yellow/40 to-transparent"
-              animate={{
-                opacity: [0.3, 0.7, 0.3],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-              }}
-            />
-          </div>
-          {/* Battlements */}
-          <div className="absolute -top-3 left-2 flex gap-2">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="w-3 h-3 bg-slate-500 border border-white/10"
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Glow Effect */}
-      <div className="absolute inset-0 -z-10 blur-3xl opacity-40">
-        <div className="w-full h-full bg-gradient-to-t from-kingdom-purple via-kingdom-blue to-kingdom-pink rounded-full" />
-      </div>
+      <img src="/images/showcase1.png" alt="Showcase" />
     </motion.div>
   );
 }
@@ -374,7 +294,7 @@ function KingdomShowcase() {
     <div className="relative w-full h-full flex items-center justify-center p-8">
       {/* Central Castle */}
       <div className="relative z-10">
-        <AnimatedCastle />
+        <AnimatedShowcase />
       </div>
 
       {/* Floating UI Elements */}

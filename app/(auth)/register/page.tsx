@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -13,7 +15,7 @@ import { AuthLayout } from "@/components/AuthLayout";
 import { CartoonButton } from "@/components/CartoonButton";
 import Link from "next/link";
 
-export function SignupPage() {
+export default function SignupPage() {
   const [role, setRole] = useState<"student" | "teacher">("student");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
