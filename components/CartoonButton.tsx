@@ -4,7 +4,7 @@ import type { BoxIcon } from "lucide-react";
 interface CartoonButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: "primary" | "secondary" | "accent";
+  variant?: "primary" | "secondary" | "accent" | "white";
   icon?: typeof BoxIcon;
   className?: string;
   fullWidth?: boolean;
@@ -24,11 +24,13 @@ export function CartoonButton({
       "bg-gradient-to-b from-kingdom-purple to-purple-700 shadow-[0_6px_0_#8a4baf]",
     accent:
       "bg-gradient-to-b from-kingdom-yellow to-yellow-500 shadow-[0_6px_0_#cc9900]",
+    white: "bg-white shadow-[0_6px_0_#cccccc]",
   };
   const textColors = {
     primary: "text-white",
     secondary: "text-white",
     accent: "text-kingdom-dark",
+    white: "text-kingdom-dark",
   };
   return (
     <motion.button
