@@ -532,7 +532,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
         </div>
 
         {/* Right Side - Visual Showcase (hidden on mobile) */}
-        <div className="hidden lg:flex relative overflow-hidden">
+        <div className="hidden lg:flex relative overflow-hidden rounded-tl-[130px] rounded-bl-[130px]">
           {/* Gradient Background */}
           <div className="absolute inset-0 bg-linear-to-br from-kingdom-purple/20 via-kingdom-blue/10 to-kingdom-pink/20" />
 
